@@ -1,20 +1,13 @@
 import express from "express";
+import { createPost } from "../controllers/post.controller.js";
 const router = express.Router();
 
-// router.get("/ale", (req, res) => {
-//   console.log("router works");
-// });
+router.get("/posta", createPost);
 
-// router.post("/ale", (req, res) => {
-//   console.log("router works");
-// });
+// router.post("/ale");
 
-// router.put("/ale", (req, res) => {
-//   console.log("router works");
-// });
+// router.put("/ale");
 
-// router.delete("/ale", (req, res) => {
-//   console.log("router works");
-// });
+// router.delete("/ale");
 
 export default router;
