@@ -9,7 +9,7 @@ export const register = async (req, res) => {
 
     const hashedPassword = await bcrypt.hash(password, 10);
 
-    console.log(hashedPassword);
+    // console.log(hashedPassword);
 
     // CREATE A NEW USER AND SAVE TO DB
     const newUser = await prisma.user.create({
@@ -29,7 +29,17 @@ export const register = async (req, res) => {
   }
 };
 
-export const login = (req, res) => {};
+export const login = async (req, res) => {
+  const { username, password } = req.body;
+
+  // CHECK IF THE USER EXISTS
+
+  const user = await prisma.user.findUnique({
+    where: { username },
+  });
+
+  if (!user) return res.status(400).json({ message: "Invalid Credentials!" });
+};
 
 export const logout = (req, res) => {
   res.clearCookie("token").status(200).json({ message: "Logout Successful" });
