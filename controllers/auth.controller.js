@@ -31,4 +31,6 @@ export const register = async (req, res) => {
 
 export const login = (req, res) => {};
 
-export const logout = (req, res) => {};
+export const logout = (req, res) => {
+  res.clearCookie("token").status(200).json({ message: "Logout Successful" });
+};
