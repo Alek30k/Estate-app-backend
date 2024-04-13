@@ -4,6 +4,7 @@ import cookieParser from "cookie-parser";
 import postRoute from "./routes/post.route.js";
 import authRoute from "./routes/auth.route.js";
 import testRoute from "./routes/test.route.js";
+import usersRoute from "./routes/user.route.js";
 
 const app = express();
 
@@ -14,6 +15,7 @@ app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 app.use("/api/auth", authRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/test", testRoute);
+app.use("/api/users", usersRoute);
 
 app.listen(8800, () => {
   console.log("Server is running!");

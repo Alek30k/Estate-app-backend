@@ -20,7 +20,7 @@ export const getUser = async (req, res) => {
   }
 };
 
-export const updateUsers = async (req, res) => {
+export const updateUser = async (req, res) => {
   try {
     const users = await prisma.user.findMany();
     res.status(200).json(users);
@@ -29,7 +29,7 @@ export const updateUsers = async (req, res) => {
     res.status(500).json({ message: "Failed to update users!" });
   }
 };
-export const deleteUsers = async (req, res) => {
+export const deleteUser = async (req, res) => {
   try {
     const users = await prisma.user.findMany();
     res.status(200).json(users);
