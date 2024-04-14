@@ -5,7 +5,7 @@ import {
   //   deletePost,
   getPost,
   getPosts,
-  //   updatePost,
+  updatePost,
 } from "../controllers/post.controller.js";
 
 const router = express.Router();
@@ -13,7 +13,7 @@ const router = express.Router();
 router.get("/", getPosts);
 router.get("/:id", getPost);
 router.post("/", verifyToken, addPost);
-// router.put("/:id", verifyToken, updatePost);
+router.put("/:id", verifyToken, updatePost);
 // router.delete("/:id", verifyToken, deletePost);
 
 export default router;
