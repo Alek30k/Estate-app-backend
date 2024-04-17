@@ -18,7 +18,7 @@ app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/test", testRoute);
-app.use("/api/chat", chatRoute);
+app.use("/api/chats", chatRoute);
 app.use("/api/message", messageRoute);
 
 app.listen(8800, () => {
