@@ -12,9 +12,7 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(
-  cors({ origin: "https://estate-app-beta.vercel.app", credentials: true })
-);
+app.use(cors());
 
 app.use("/api/auth", authRoute);
 app.use("/api/users", usersRoute);
