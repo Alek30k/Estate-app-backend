@@ -21,8 +21,6 @@ export const register = async (req, res) => {
       },
     });
 
-    console.log(newUser);
-
     res.status(201).json({ message: "User created successfully" });
   } catch (err) {
     console.log(err);
@@ -58,7 +56,7 @@ export const login = async (req, res) => {
         id: user.id,
         isAdmin: false,
       },
-      process.env.JWT_SECRET_KEY,
+      "Q3k5EuDm3EnrVFbBX5ciZ4fQ8oV2sdBGNtH7NhP2Zzc",
       { expiresIn: age }
     );
 
