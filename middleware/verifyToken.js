@@ -5,7 +5,7 @@ export const verifyToken = (req, res, next) => {
 
   // console.log(token);
 
-  // if (!token) return res.status(401).json({ message: "Not Authenticated!" });
+  if (!token) return res.status(401).json({ message: "Not Authenticated!" });
 
   jwt.verify(token, "Q3k5EuDm3EnrVFb", async (err, payload) => {
     if (err) {
