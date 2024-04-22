@@ -46,7 +46,7 @@ export const getPost = async (req, res) => {
     const token = req.cookies?.token;
 
     if (token) {
-      jwt.verify(token, process.env.JWT_SECRET_KEY, async (err, payload) => {
+      jwt.verify(token, "Q3k5EuDm3EnrVFb", async (err, payload) => {
         if (!err) {
           const saved = await prisma.savedPost.findUnique({
             where: {
