@@ -56,7 +56,7 @@ export const login = async (req, res) => {
         id: user.id,
         isAdmin: false,
       },
-      "Q3k5EuDm3EnrVFbBX5ciZ4fQ8oV2sdBGNtH7NhP2Zzc",
+      "Q3k5EuDm3EnrVFb",
       { expiresIn: age }
     );
 
@@ -65,9 +65,9 @@ export const login = async (req, res) => {
     res
       .cookie("token", token, {
         httpOnly: true,
-        secure: true,
+        // secure: true,
         maxAge: age,
-        domain: "https://estate-app-beta.vercel.app",
+        // domain: "https://estate-app-beta.vercel.app",
       })
       .status(200)
       .json(userInfo);
