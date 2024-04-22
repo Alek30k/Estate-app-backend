@@ -26,12 +26,12 @@ export const getUser = async (req, res) => {
 
 export const updateUser = async (req, res) => {
   const id = req.params.id;
-  // const tokenUserId = req.userId;
+  const tokenUserId = req.userId;
   const { password, avatar, ...inputs } = req.body;
 
-  // if (id !== tokenUserId) {
-  //   return res.status(403).json({ message: "Not Authorized!" });
-  // }
+  if (id !== tokenUserId) {
+    return res.status(403).json({ message: "Not Authorized!" });
+  }
 
   let updatedPassword = null;
   try {
@@ -59,11 +59,11 @@ export const updateUser = async (req, res) => {
 
 export const deleteUser = async (req, res) => {
   const id = req.params.id;
-  // const tokenUserId = req.userId;
+  const tokenUserId = req.userId;
 
-  // if (id !== tokenUserId) {
-  //   return res.status(403).json({ message: "Not Authorized!" });
-  // }
+  if (id !== tokenUserId) {
+    return res.status(403).json({ message: "Not Authorized!" });
+  }
 
   try {
     await prisma.user.delete({
@@ -78,13 +78,13 @@ export const deleteUser = async (req, res) => {
 
 export const savePost = async (req, res) => {
   const postId = req.body.postId;
-  // const tokenUserId = req.userId;
+  const tokenUserId = req.userId;
 
   try {
     const savedPost = await prisma.savedPost.findUnique({
       where: {
         userId_postId: {
-          // userId: tokenUserId,
+          userId: tokenUserId,
           postId,
         },
       },
@@ -100,7 +100,7 @@ export const savePost = async (req, res) => {
     } else {
       await prisma.savedPost.create({
         data: {
-          // userId: tokenUserId,
+          userId: tokenUserId,
           postId,
         },
       });
@@ -113,13 +113,13 @@ export const savePost = async (req, res) => {
 };
 
 export const profilePosts = async (req, res) => {
-  // const tokenUserId = req.userId;
+  const tokenUserId = req.userId;
   try {
-    // const userPosts = await prisma.post.findMany({
-    //   where: { userId: tokenUserId },
-    // });
+    const userPosts = await prisma.post.findMany({
+      where: { userId: tokenUserId },
+    });
     const saved = await prisma.savedPost.findMany({
-      // where: { userId: tokenUserId },
+      where: { userId: tokenUserId },
       include: {
         post: true,
       },
