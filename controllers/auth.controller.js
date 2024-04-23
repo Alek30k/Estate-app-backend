@@ -67,7 +67,7 @@ export const login = async (req, res) => {
         httpOnly: true,
         secure: true,
         maxAge: age,
-        domain: "https://estate-app-beta.vercel.app",
+        // domain: "https://estate-app-beta.vercel.app",
       })
       .status(200)
       .json(userInfo);
